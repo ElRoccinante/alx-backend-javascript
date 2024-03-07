@@ -1,4 +1,2 @@
-export default function getResponseFromAPI() {
-  return new Promise((resolve, reject) => {
-  });
-}
+#!/usr/bin/node
+export default () => new Promise((resolve) => resolve(true));
