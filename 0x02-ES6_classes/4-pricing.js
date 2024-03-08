@@ -16,8 +16,8 @@ export default class Pricing {
     return this._currency;
   }
 
-  set currency(n) {
-    this._currency = n;
+  set currency(m) {
+    this._currency = m;
   }
 
   displayFullPrice() {
