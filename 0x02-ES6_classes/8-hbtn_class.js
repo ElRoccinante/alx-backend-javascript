@@ -9,7 +9,7 @@ export default class HolbertonClass {
   }
 
   get location() {
-    return this._lcoation;
+    return this._location;
   }
 
   valueOf() {
@@ -17,6 +17,6 @@ export default class HolbertonClass {
   }
 
   toString() {
-    return this._lcoation;
+    return this._location;
   }
 }
