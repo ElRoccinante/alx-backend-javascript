@@ -1,8 +1,11 @@
-export default function appendToEachArrayValue(array, appendString) {
-  for (const value of array) {
-    const idx = array.indexOf(value);
-    array[idx] = appendString + value; // eslint-disable-line no-param-reassign
+export default class Car {
+  constructor(brand, motor, color) {
+    this._brand = brand;
+    this._motor = motor;
+    this._color = color;
   }
 
-  return array;
+  cloneCar() {
+    return new this.constructor(this._brand, this._motor, this._color);
+  }
 }
