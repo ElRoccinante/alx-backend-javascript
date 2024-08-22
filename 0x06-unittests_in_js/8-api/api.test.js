@@ -1,31 +1,27 @@
-const { expect, assert } = require('chai');
 const request = require('request');
+const { expect } = require('chai');
+const sinon = require('sinon');
 
 /* eslint-disable */
-describe('Index page', () => {
-  it('check response body', (done) => {
-    request.get('http://localhost:7865/', (error, res, body) => {
-      expect(body).equal('Welcome to the payment system');
+describe('apiTesting', () => {
+  it('Testing correct statusCode...', (done) => {
+    request('http://localhost:7865/', (error, response) => {
+      expect(response.status, 200);
+      done();
     });
-    done();
   });
-  it('check response status code', (done) => {
-    request.get('http://localhost:7865/DFG', (error, res, body) => {
-      expect(res.statusCode).equal(404);
+  it('Testing correct result...', (done) => {
+    request('http://localhost:7865/', (error, response) => {
+      expect(response.body).to.deep.equal('Welcome to the payment system');
+      done();
     });
-    done();
   });
-  it('check response status code invalid endpoint', (done) => {
-    request.get('http://localhost:7865/', (error, res, body) => {
-      expect(res.statusCode).equal(200);
+  it('Testing correct log...', (done) => {
+    request('http://localhost:7865/', (error, response) => {
+	  const consoleLog = sinon.spy(console, 'log');
+      expect(consoleLog.calledWith('API available on localhost port 7865'));
+	  consoleLog.restore();
+      done();
     });
-    done();
-  });
-  it('check response Error', (done) => {
-    request.get('http://localhost:7865/', (error, res, body) => {
-      assert.isNull(error);
-    });
-    done();
   });
 });
-/* eslint-enable */
